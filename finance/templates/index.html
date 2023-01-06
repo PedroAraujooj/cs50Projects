@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+<h1> Your cash is {{cash|usd}}</h1>
+<table style="margin-left: auto; margin-right: auto;">
+    <thead>
+        <tr>
+            <th>Symbol/</th>
+            <th>Number of Shares/</th>
+            <th>New value/</th>
+            <th>Total Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- TODO: Loop through the database entries to display them in this table -->
+        {% for new in news %}
+            <tr>
+                <th>{{new.symbol}}</th>
+                <th>{{new.total}}</th>
+                <th>{{new.newprice| usd}}</th>
+                <th>{{(new.newprice * new.total) | usd}}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
