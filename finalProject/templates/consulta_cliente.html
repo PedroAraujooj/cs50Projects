@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cadastrar cliente
+{% endblock %}
+
+{% block main %}
+    <form action="/consulta_cliente" method="post">
+        <div class="input">
+            <p>Consulte a conta de um Cliente</p>
+            <select name="cliente" class="input">
+                {% for client in clientes_op %}
+                <option value="{{ client.client }}">{{client.client}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Consultar</button>
+    </form>
+{% endblock %}

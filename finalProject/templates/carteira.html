@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Carteira
+{% endblock %}
+
+{% block main %}
+    <form action="/carteira" method="post">
+        <div class="input">
+            <p>Descrição</p>
+            <input name="disc" placeholder="Descrição" type="text">
+        </div>
+        <div class="input">
+            <p>Escolha a opção de transação</p>
+            <select name="transacao" class="input">
+                <option value="descontar">Descontar</option>
+                <option value="adicionar">Adicionar</option>
+            </select>
+        </div>
+        <div class="input">
+            <p>Valor a ser adicionado ou descontado</p>
+            <input name="valor" placeholder="Valor" type="text">
+        </div>
+        <button type="submit">Adicionar ou descontar</button>
+    </form>
+    <br>
+    <br>
+    <table style="margin-left: auto; margin-right: auto;">
+        <thead>
+            <tr>
+                <th>/Operação</th>
+                <th>/Valor</th>
+                <th>/Descrição</th>
+                <th>/data</th>
+                <th>/total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for carteira in carteiras %}
+                <tr>
+                    {% if carteira.price > 0 %}
+                        <th>Adicionou</th>
+                        <th>{{carteira.price}}</th>
+                    {% else %}
+                        <th>Retirou</th>
+                        <th>{{(-carteira.price)}}</th>
+                    {% endif %}
+                    <th>{{carteira.disc}}</th>
+                    <th>({{carteira.data}})</th>
+                    <th>{{carteira.total}}</th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}

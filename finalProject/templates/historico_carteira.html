@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Historico carteira
+{% endblock %}
+
+{% block main %}
+<h2>O total da sua carteira é de {{total}} reais</h2>
+<br>
+<table style="margin-left: auto; margin-right: auto;">
+    <thead>
+        <tr>
+            <th>/Operação</th>
+            <th>/Valor</th>
+            <th>/Descrição</th>
+            <th>/data</th>
+            <th>/total</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for carteira in carteiras %}
+            <tr>
+                {% if carteira.price > 0 %}
+                    <th>Adicionou</th>
+                    <th>{{carteira.price}}</th>
+                {% else %}
+                    <th>Retirou</th>
+                    <th>{{(-carteira.price)}}</th>
+                {% endif %}
+                <th>{{carteira.disc}}</th>
+                <th>({{carteira.data}})</th>
+                <th>{{carteira.total}}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+        <script type="text/javascript" src="/static/script.js"></script>
+
+    </head>
+
+    <body>
+        <header>
+            <h1><a  href="/">FIADO.APP</a></h1>
+
+            <nav>
+                {% if session["user_id"] %}
+                    <ul class="newnav">
+                        <li><a href="/consulta_cliente">Consultar cliente</a></li>
+                        <li><a href="/cadastro_cliente">Cadastrar cliente</a></li>
+                        <li><a href="/historico_cliente">Histórico de clientes</a></li>
+                        <li><a href="/carteira">Carteira</a></li>
+                        <li><a href="/historico_carteira">Histórico da carteira</a></li>
+                        <li><a href="/logout">Sair</a></li>
+                    </ul>
+                {% else %}
+                    <ul>
+                        <li><a href="/register">Register</a></li>
+                        <li><a  href="/login">Log In</a></li>
+                    </ul>
+                {% endif %}
+            </nav>
+        </header>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer>
+        </footer>
+
+    </body>
+
+</html>

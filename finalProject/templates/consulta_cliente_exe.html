@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Consulta cliente
+{% endblock %}
+
+{% block main %}
+<h2>Dívida total é de {{total_tb}} reais</h2>
+<br>
+<table style="margin-left: auto; margin-right: auto;">
+    <thead>
+        <tr>
+            <th>/Cliente</th>
+            <th>/Operação</th>
+            <th>/Valor</th>
+            <th>/Descrição</th>
+            <th>/data</th>
+            <th>/total</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clientes %}
+            <tr>
+                <th>{{client.client}}</th>
+                {% if client.price > 0 %}
+                    <th>Endividou</th>
+                    <th>{{client.price}}</th>
+                {% else %}
+                    <th>Pagou</th>
+                    <th>{{(-client.price)}}</th>
+                {% endif %}
+                <th>{{client.disc}}</th>
+                <th>({{client.data}})</th>
+                <th>{{client.total}}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cadastrar cliente
+{% endblock %}
+
+{% block main %}
+    <form action="/cadastro_cliente" method="post">
+        <div class="input">
+            <p>Registre um novo cliente</p>
+            <input autocomplete="off" autofocus id="novo_cliente" name="novo_cliente" placeholder="Novo cliente" type="text">
+        </div>
+        <button type="submit">Registrar</button>
+    </form>
+{% endblock %}

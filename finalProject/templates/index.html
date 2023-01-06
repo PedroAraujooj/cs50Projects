@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home page
+{% endblock %}
+
+{% block main %}
+    <form action="/" method="post">
+        <div class="input">
+            <p>Escolha o cliente</p>
+            <select name="cliente" class="input">
+                {% for client in clientes %}
+                <option value="{{ client.client }}">{{client.client}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="input">
+            <p>Descrição</p>
+            <input name="disc" placeholder="Descrição" type="text">
+        </div>
+        <div class="input">
+            <p>Escolha a opção de transação</p>
+            <select name="transacao" class="input">
+                <option value="endividar">Endividar</option>
+                <option value="pagar">Pagar</option>
+            </select>
+        </div>
+        <div class="input">
+            <p>Valor a ser adicionado ou pago</p>
+            <input name="valor" placeholder="Valor" type="text">
+        </div>
+        <button type="submit">Adicionar ou pagar dívida</button>
+    </form>
+    <br>
+    <table style="margin-left: auto; margin-right: auto;">
+        <thead>
+            <tr>
+                <th>/Cliente</th>
+                <th>/Operação</th>
+                <th>/Valor</th>
+                <th>/Descrição</th>
+                <th>/data</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for clientes_hi in clientes_his %}
+                <tr>
+                    <th>{{clientes_hi.client}}</th>
+                    {% if clientes_hi.price > 0 %}
+                        <th>Endividou</th>
+                        <th>{{clientes_hi.price}}</th>
+                    {% else %}
+                        <th>Pagou</th>
+                        <th>{{(-clientes_hi.price)}}</th>
+                    {% endif %}
+                    <th>{{clientes_hi.disc}}</th>
+                    <th>({{clientes_hi.data}})</th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
