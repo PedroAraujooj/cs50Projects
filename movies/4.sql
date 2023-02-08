@@ -1,1 +1,0 @@
-SELECT COUNT (title) FROM movies, ratings WHERE ratings.movie_id = movies.id and rating = "10";

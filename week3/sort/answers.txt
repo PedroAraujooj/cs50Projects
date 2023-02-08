@@ -1,0 +1,15 @@
+sort1 uses: Bubble sort
+
+How do you know?: I know it because I testd "sorts" 1 and 3 (I excluded 2 because I already knew it was the Merge)
+ using "sorted5000" and "sorted50000" the sort1 got the best time, so sort1 must have the omega(n)
+
+sort2 uses: Merge sort
+
+How do you know?: I know it because I testd all "sorts" using "reversed50000" and the sort2 was the fastest, so it must
+have big"O"(log(n))
+
+sort3 uses: Selection sort
+
+How do you know?: I know it by eliminating alternatives, but to confirm,  I testd "sorts" 1 and 3
+(I excluded 2 because I already know it was the Merge) using "sorted5000" and "sorted50000" the
+ sort3 got the worst time, so sort3 must have the omega(n squared)

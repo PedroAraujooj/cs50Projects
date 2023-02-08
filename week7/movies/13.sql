@@ -1,0 +1,1 @@
+SELECT name FROM (SELECT DISTINCT name FROM stars, people, movies, (SELECT movie_id AS jooj FROM people, movies, stars WHERE stars.movie_id = movies.id AND stars.person_id = people.id AND people.name = "Kevin Bacon" AND people.birth = "1958") WHERE stars.movie_id = movies.id AND stars.person_id = people.id AND stars.movie_id = jooj) WHERE name <> "Kevin Bacon";

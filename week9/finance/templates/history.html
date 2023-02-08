@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+<table style="margin-left: auto; margin-right: auto;">
+    <thead>
+        <tr>
+            <th>Buy or Sell/</th>
+            <th>Symbol/</th>
+            <th>Number of Shares/</th>
+            <th>Old Price/</th>
+            <th>New value/</th>
+            <th>Total Value/</th>
+            <th>Date</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <!-- TODO: Loop through the database entries to display them in this table -->
+        {% for new in news %}
+            <tr>
+                {% if new.shares > 0 %}
+                    <th>Buy</th>
+                {% else %}
+                    <th>Sell</th>
+                {% endif %}
+                <th>{{new.symbol}}</th>
+                {% if new.shares > 0 %}
+                <th>{{new.shares}}</th>
+                {% else %}
+                <th>{{(-new.shares)}}</th>
+                {% endif %}
+                <!--<th>{{new.shares}}</th>-->
+                <th>{{new.price| usd}}</th>
+                <th>{{new.newprice| usd}}</th>
+                <th>{{(new.newprice * new.total) | usd}}</th>
+                <th>{{new.data}}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
